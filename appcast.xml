@@ -1,25 +1,28 @@
+---
+---
+{%- assign rel = site.data.release -%}
 <?xml version="1.0" encoding="utf-8"?>
 <rss version="2.0" xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle">
   <channel>
-    <title>Transmission Appcast</title>
-    <link>https://transmissionbt.com/appcast.xml</link>
+    <title>{{ site.brand }} Appcast</title>
+    <link>{{ site.url }}/appcast.xml</link>
     <description>Most recent version available.</description>
     <language>en</language>
-    <pubDate>Mon, 29 Jun 2026 21:00:00 -0400</pubDate>
+    <pubDate>{{ rel.pubdate }}</pubDate>
 
     <item>
-      	<title>Transmission 4.1.3</title>
-      	<link>https://transmissionbt.com</link>
-      	<sparkle:releaseNotesLink>https://transmissionbt.com/appcast/releasenotes.html</sparkle:releaseNotesLink>
-      	<sparkle:fullReleaseNotesLink>https://github.com/transmission/transmission/releases</sparkle:fullReleaseNotesLink>
-      	<sparkle:version>14718.1.399</sparkle:version>
-      	<sparkle:shortVersionString>4.1.3</sparkle:shortVersionString>
-      	<pubDate>Mon, 29 Jun 2026 21:00:00 -0400</pubDate>
+      	<title>{{ site.brand }} {{ rel.version }}</title>
+      	<link>{{ site.url }}</link>
+      	<sparkle:releaseNotesLink>{{ site.url }}/appcast/releasenotes.html</sparkle:releaseNotesLink>
+      	<sparkle:fullReleaseNotesLink>{{ site.releases_url }}</sparkle:fullReleaseNotesLink>
+      	<sparkle:version>{{ rel.sparkle_version }}</sparkle:version>
+      	<sparkle:shortVersionString>{{ rel.version }}</sparkle:shortVersionString>
+      	<pubDate>{{ rel.pubdate }}</pubDate>
       	<enclosure
-      	url="https://github.com/transmission/transmission/releases/download/4.1.3/Transmission-4.1.3.dmg"
-      	sparkle:dsaSignature="MCwCFEgxEjfAWryZLcihXUQDmew3ugX8AhR4i7Cvf33w5aLo5QTgxO4T+3waKg=="
+      	url="{{ site.releases_url }}/download/{{ rel.version }}/Retransmission-{{ rel.version }}.dmg"
+      	sparkle:dsaSignature="{{ rel.dsa_signature }}"
       	type="application/octet-stream"/>
-      	<sparkle:minimumSystemVersion>11.0.0</sparkle:minimumSystemVersion>
+      	<sparkle:minimumSystemVersion>{{ rel.min_macos }}.0</sparkle:minimumSystemVersion>
     </item>
 
     <item>
