@@ -1,21 +1,8 @@
-<html>
-
-	<head>
-		<META http-equiv="Content-Type" content="text/html; charset=utf-8" />
-		<link media="all" rel="stylesheet" href="../styles/TransBody.css" />
-		<title>Port Forwarding a Router</title>
-	</head>
-	<body>
-		<div id="mainbox">
-			<div id="banner">
-				<a name="menus"></a>
-				<div id="machelp">
-				<a class="bread" href="../index.html">Transmission Help</a>
-				</div>
-				<div id="index">
-				<a class="leftborder" href="../html/Index2.html">Index</a></div>
-				</div>
-			</div>
+---
+layout: help-content
+css: TransBody.css
+title: "Port Forwarding a Router"
+---
 			<div id="pagetitle">
 				<h1>Port Forwarding a Router</h1>
 			</div>
@@ -30,7 +17,7 @@
 							<li>In Ubuntu, right click the Network Manager applet in the menu bar, and select 'Connection Information'. The address is probably something like 192.168.1.100, or 10.0.1.2.</li>
 							<li>If you don't have Network Manager, open a Terminal and type 'ifconfig'. It will list information for each of your network devices. Find the one you are using, and use the number after 'inet addr:'.</li>
 						</ul>
-					<li>Open Transmission, go to preferences, and enter a number for the port. It is recommended you pick a random number between 49152 and 65535. Let's use 50001 for now. Then quit Transmission.</li>
+					<li>Open Retransmission, go to preferences, and enter a number for the port. It is recommended you pick a random number between 49152 and 65535. Let's use 50001 for now. Then quit Retransmission.</li>
 					<li>Go into your router configuration screen. Normally this is done via your web browser using the address <a href="http://192.168.0.1">192.168.0.1</a> etc.
 					<li>Find the port forwarding (sometimes called port mapping) screen. While the page will be different for each router generally you will enter something similar to the following:</li>
 
@@ -46,7 +33,3 @@
 			<p>For more comprehensive instructions specific to your router, <a href="http://www.portforward.com/english/routers/port_forwarding/routerindex.htm">click here</a> and choose your router from the list.
 			<p>
 			</div>
-		</div>
-	</body>
-	
-</html>
