@@ -1,0 +1,10 @@
+# Rolling "nightly" pre-release published by the retransmission/retransmission
+# "Nightly" workflow. These asset names are stable; the source tarball is dated
+# (e.g. transmission-4.2.0-nightly.20260722.tar.xz), so the page links the
+# release page for source rather than a fixed URL.
+tag: nightly
+assets:
+  macos: Retransmission-nightly-macos-universal.zip
+  win_x64: Retransmission-nightly-x64.msi
+  win_arm64: Retransmission-nightly-arm64.msi
+  win_x86: Retransmission-nightly-x86.msi

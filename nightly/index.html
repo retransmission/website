@@ -1,0 +1,63 @@
+---
+layout: default
+active_nav: download
+title: Nightly Builds
+description: Development builds from the tip of the main branch.
+---
+{% assign n = site.data.nightly %}
+{% assign base = site.releases_url | append: "/download/" | append: n.tag %}
+{% assign release = site.releases_url | append: "/tag/" | append: n.tag %}
+   <main id="content">
+      <div class="container pb-4 pt-5 py-5">
+         <h1 class="display-5 fw-bold">Nightly Builds</h1>
+         <p class="lead mb-4">Automated builds from the very latest {{ site.brand }} source &mdash; the tip of <code>main</code>, refreshed on every successful build. They have the newest features and fixes, and the newest bugs. For everyday use, grab a tested release from the <a href="/download">downloads page</a> instead.</p>
+
+         <div class="alert alert-warning" role="alert">
+            <h5 class="alert-heading">These are unsigned development builds</h5>
+            <p class="mb-2"><i class="fa-brands fa-apple">&nbsp;</i>&nbsp;<strong>macOS</strong> will say the app is from an unidentified developer. Control-click the app, choose <em>Open</em>, and confirm &mdash; or run <code>xattr -dr com.apple.quarantine Transmission.app</code> in Terminal.</p>
+            <p class="mb-0"><i class="fa-brands fa-windows">&nbsp;</i>&nbsp;<strong>Windows</strong> SmartScreen may warn about an unknown publisher &mdash; click <em>More info &rarr; Run anyway</em>. The MSI also needs the <a href="https://aka.ms/vs/17/release/vc_redist.x64.exe">Microsoft Visual C++ Redistributable</a> for your architecture (x64, arm64, or x86).</p>
+         </div>
+
+         <div class="row mb-3 text-center">
+            <section class="col-lg-4 themed-grid-col pt-3">
+               <div class="card h-100">
+                  <div class="card-body"> <img src="/assets/images/distro_logos/apple_logo.svg" class="mb-3 distro-logo" alt="Apple Logo" aria-hidden="true">
+                     <h3>macOS</h3>
+                     <p>
+                        <a href="{{ base }}/{{ n.assets.macos }}">{{ n.assets.macos }}</a><br/>
+                        <i class="fa-brands fa-apple">&nbsp;</i>Universal (Apple Silicon &amp; Intel)<br/>
+                        Requires macOS 11 or later
+                     </p>
+                  </div>
+               </div>
+            </section>
+            <section class="col-lg-4 themed-grid-col pt-3">
+               <div class="card h-100">
+                  <div class="card-body"> <img src="/assets/images/distro_logos/windows_logo.svg" class="mb-3 distro-logo" alt="Windows" aria-hidden="true">
+                     <h3>Windows</h3>
+                     <p>
+                        <a href="{{ base }}/{{ n.assets.win_x64 }}">{{ n.assets.win_x64 }}</a> <br/>
+                        <a href="{{ base }}/{{ n.assets.win_arm64 }}">{{ n.assets.win_arm64 }}</a> <br/>
+                        <a href="{{ base }}/{{ n.assets.win_x86 }}">{{ n.assets.win_x86 }}</a> <br/>
+                        Qt6 &middot; requires Windows 10 or later
+                     </p>
+                  </div>
+               </div>
+            </section>
+            <section class="col-lg-4 themed-grid-col pt-3">
+               <div class="card h-100">
+                  <div class="card-body"> <img src="/assets/images/distro_logos/box.png" class="mb-3" alt="Source" aria-hidden="true" style="height:60px;">
+                     <h3>Source</h3>
+                     <p>
+                        The nightly source tarball is dated, so grab the current one from the <a href="{{ release }}">release page</a>.
+                        <br/>
+                        <small class="text-muted">Linux &amp; Unix: build from source, or use your distro's package.</small>
+                     </p>
+                  </div>
+               </div>
+            </section>
+         </div>
+
+         <p class="text-center mt-3"> <a href="{{ release }}" class="btn btn-outline-secondary" role="button">View the nightly release &amp; latest commit</a> </p>
+      </div>
+   </main>
