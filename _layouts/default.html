@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+   <meta charset="utf-8">
+   <link rel="shortcut icon" type="image/jpg" href="/favicon.ico" />
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+   <meta name="description" content="{{ page.description | default: site.description }}">
+   <title>{{ page.title | default: site.brand }}</title>
+   <!-- Bootstrap core CSS -->
+   <link href="/assets/bootstrap.min.css" type="text/css" rel="stylesheet">
+   <!-- Favicons -->
+   <link rel="apple-touch-icon" href="/assets/images/icons/1024.png" sizes="180x180">
+   <link rel="icon" href="/assets/images/icons/32.png" sizes="32x32" type="image/png">
+   <link rel="icon" href="/assets/images/icons/16.png" sizes="16x16" type="image/png">
+   <link rel="icon" href="/assets/images/icons/favicon.ico">
+   <link href="/assets/fontawesome.css" rel="stylesheet">
+   <link href="/assets/style.css" type="text/css" rel="stylesheet">
+   <script type="application/ld+json">
+      {
+         "@context": "http://schema.org",
+         "@type": "SoftwareApplication",
+         "applicationCategory": "MultimediaApplication",
+         "name": "{{ site.brand }}",
+         "description": "{{ site.description }}",
+         "image": "/assets/images/retransmission_icon.png",
+         "screenshot": ["/assets/images/homepage/carousel_homepage/screenshot_mac_full_window.png", ["/assets/images/homepage/carousel_homepage/screenshot_windows.png", ["/assets/images/homepage/carousel_homepage/screenshot_linux.png"],
+         "url": "{{ site.url | remove: 'https://' }}",
+         "operatingSystem": ["macOS", "Windows", "Linux", "Unix"],
+         "softwareVersion": ["{{ site.data.release.version }}"],
+         "offers": {
+            "@type": "Offer",
+            "price": "0"
+         }
+      }
+   </script>
+</head>
+
+<body>
+   {% include nav.html %}
+   {{ content }}
+   {% include footer.html %}
+   <script src="/assets/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
