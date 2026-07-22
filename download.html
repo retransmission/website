@@ -4,6 +4,9 @@ active_nav: download
 title: "Retransmission | Download"
 description: Download Retransmission
 ---
+{% assign rel = site.data.release %}
+{% assign v = rel.version %}
+{% assign base = site.releases_url | append: "/download/" | append: v | append: "/" %}
    <main id="content">
       <div class="container pb-4 pt-5 py-5">
          <h1 class="display-5 fw-bold">Downloads</h1>
@@ -15,7 +18,7 @@ description: Download Retransmission
                         alt="Apple Logo" aria-hidden="true">
                      <h3>macOS</h3>
                      <p>
-                        <a href="https://github.com/retransmission/retransmission/releases/download/4.1.2/Transmission-4.1.2.dmg">Transmission-4.1.2.dmg</a><br/>
+                        <a href="{{ base }}Retransmission-{{ v }}.dmg">Retransmission-{{ v }}.dmg</a><br/>
                         <i class="fa-brands fa-apple">&nbsp;</i>Apple Silicon Native<br/>
                         Requires macOS 11.0 or later <p/>
                         <small class="text-muted">
@@ -33,13 +36,13 @@ description: Download Retransmission
                         alt="Windows" aria-hidden="true">
                      <h3>Windows</h3>
                      <p>
-                        <a href="https://github.com/retransmission/retransmission/releases/download/4.1.2/transmission-4.1.2-x64.msi">transmission-4.1.2-x64.msi</a> <br/>
-                        <a href="https://github.com/retransmission/retransmission/releases/download/4.1.2/transmission-4.1.2-x86.msi">transmission-4.1.2-x86.msi</a> <br/>
+                        <a href="{{ base }}retransmission-{{ v }}-x64.msi">retransmission-{{ v }}-x64.msi</a> <br/>
+                        <a href="{{ base }}retransmission-{{ v }}-x86.msi">retransmission-{{ v }}-x86.msi</a> <br/>
                         Requires Windows 10 or later
                      </p>
                      <p class="small">
-                        <a href="https://github.com/retransmission/retransmission/releases/download/4.1.2/transmission-4.1.2-qt5-x64.msi">transmission-4.1.2-qt5-x64.msi</a> <br/>
-                        <a href="https://github.com/retransmission/retransmission/releases/download/4.1.2/transmission-4.1.2-qt5-x86.msi">transmission-4.1.2-qt5-x86.msi</a> <br/>
+                        <a href="{{ base }}retransmission-{{ v }}-qt5-x64.msi">retransmission-{{ v }}-qt5-x64.msi</a> <br/>
+                        <a href="{{ base }}retransmission-{{ v }}-qt5-x86.msi">retransmission-{{ v }}-qt5-x86.msi</a> <br/>
                         Requires Windows 7 or later
                      </p>
                      <p>
@@ -58,7 +61,7 @@ description: Download Retransmission
                         aria-hidden="true">
                      <h3>Linux &amp; Unix</h3>
                      <p>
-                        <a href="https://github.com/retransmission/retransmission/releases/download/4.1.2/transmission-4.1.2.tar.xz">transmission-4.1.2.tar.xz</a>
+                        <a href="{{ base }}retransmission-{{ v }}.tar.xz">retransmission-{{ v }}.tar.xz</a>
                         <p/>
                         <small class="text-muted">
                            <a href="https://github.com/retransmission/retransmission-releases">Previous Releases</a>
@@ -97,6 +100,7 @@ description: Download Retransmission
                </div>
             </section>
          </div>
+         {% if rel.sha256.dmg != "" %}
          <section class="row pb-4">
             <div class="col-md-12 themed-grid-col">
                <div class="card mb-3">
@@ -104,12 +108,12 @@ description: Download Retransmission
                      <h2 class="card-title">SHA256 Hashes</h2>
                      <div class="card-text">
 <pre>
-<a href="https://www.virustotal.com/en/file/0532e8c36732fb37c3db2628b04f9408b38d253e90a3a56b0399ea0151a3340b/analysis">0532e8c36732fb37c3db2628b04f9408b38d253e90a3a56b0399ea0151a3340b</a>  Transmission-4.1.2.dmg
-<a href="https://www.virustotal.com/en/file/f36fd9c245f3c298597ac238b319c86f00eacfd1984881aa8eca3a0943f53008/analysis">f36fd9c245f3c298597ac238b319c86f00eacfd1984881aa8eca3a0943f53008</a>  transmission-4.1.2-x64.msi
-<a href="https://www.virustotal.com/en/file/eeafc800a804da5d2bfba7418fdd6d3f18cc403d9090369cc5400b803f87070c/analysis">eeafc800a804da5d2bfba7418fdd6d3f18cc403d9090369cc5400b803f87070c</a>  transmission-4.1.2-x86.msi
-<a href="https://www.virustotal.com/en/file/49b9586c63ee29018c67b0b000f9c342553899a55e8089954c1207af2c7165b4/analysis">49b9586c63ee29018c67b0b000f9c342553899a55e8089954c1207af2c7165b4</a>  transmission-4.1.2-qt5-x64.msi
-<a href="https://www.virustotal.com/en/file/e1ded82a66dcafee4b6d3d7dc9c6b39f38b049a76545f2942cab40328bf38234/analysis">e1ded82a66dcafee4b6d3d7dc9c6b39f38b049a76545f2942cab40328bf38234</a>  transmission-4.1.2-qt5-x86.msi
-<a href="https://www.virustotal.com/en/file/4c6070bdfae264a629cb2b0f1eaf567cb9c6208f9218aa446c0aee883eb0f1fc/analysis">4c6070bdfae264a629cb2b0f1eaf567cb9c6208f9218aa446c0aee883eb0f1fc</a>  transmission-4.1.2.tar.xz
+<a href="https://www.virustotal.com/en/file/{{ rel.sha256.dmg }}/analysis">{{ rel.sha256.dmg }}</a>  Retransmission-{{ v }}.dmg
+<a href="https://www.virustotal.com/en/file/{{ rel.sha256.win_x64 }}/analysis">{{ rel.sha256.win_x64 }}</a>  retransmission-{{ v }}-x64.msi
+<a href="https://www.virustotal.com/en/file/{{ rel.sha256.win_x86 }}/analysis">{{ rel.sha256.win_x86 }}</a>  retransmission-{{ v }}-x86.msi
+<a href="https://www.virustotal.com/en/file/{{ rel.sha256.win_qt5_x64 }}/analysis">{{ rel.sha256.win_qt5_x64 }}</a>  retransmission-{{ v }}-qt5-x64.msi
+<a href="https://www.virustotal.com/en/file/{{ rel.sha256.win_qt5_x86 }}/analysis">{{ rel.sha256.win_qt5_x86 }}</a>  retransmission-{{ v }}-qt5-x86.msi
+<a href="https://www.virustotal.com/en/file/{{ rel.sha256.tarxz }}/analysis">{{ rel.sha256.tarxz }}</a>  retransmission-{{ v }}.tar.xz
 </pre>
                      <p class="card-text"> Windows MSI packages: free code signing provided by <a
                            href="https://signpath.io/">SignPath.io</a>, certificate by <a
@@ -119,6 +123,7 @@ description: Download Retransmission
                </div>
             </div>
          </section>
+         {% endif %}
          <section>
             <a id="unixdistros"></a>
             <h2 class="mb-1">Linux &amp; Unix Distros</h2>
