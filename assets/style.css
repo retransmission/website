@@ -221,3 +221,30 @@ background: linear-gradient(to right, #140A17 0%, #041e2a 50%, #140A17 100%);
     color: #f87cba;
   }
 }
+
+/* Donate page — charity tiles */
+.charity-logo {
+   width: 100%;
+   max-width: 340px;
+   height: 120px;
+   padding: 1.25rem 1.5rem;
+   /* NOMC's logo is white, so the tile needs a dark backdrop regardless of theme. */
+   background: #000000;
+   border: 1px solid rgba(255, 255, 255, 0.12);
+   border-radius: 0.75rem;
+}
+.charity-logo img {
+   max-height: 100%;
+   max-width: 100%;
+   width: auto;
+}
+/* GiveRadar ships an icon only, so pair it with a wordmark. */
+.charity-logo-text {
+   color: #ffffff;
+   font-size: 1.75rem;
+   font-weight: 700;
+   letter-spacing: 0.02em;
+}
+.charity-donate {
+   min-width: 18rem;
+}
