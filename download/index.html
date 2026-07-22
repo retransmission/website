@@ -1,2 +1,345 @@
-<meta http-equiv="refresh" content="0; url=/download.html" />
-<p><a href="/">Home</a></p>
+---
+layout: default
+active_nav: download
+title: "Retransmission | Download"
+description: Download Retransmission
+---
+{% assign rel = site.data.release %}
+{% assign v = rel.version %}
+{% assign base = site.releases_url | append: "/download/" | append: v | append: "/" %}
+   <main id="content">
+      <div class="container pb-4 pt-5 py-5">
+         <h1 class="display-5 fw-bold">Downloads</h1>
+            <!--<h3 class="mb-3">Versions 3.0 and 4.0 beta</h3>-->
+         <div class="row mb-0 text-center">
+            <section class="col-lg-4 themed-grid-col pt-3">
+               <div class="card h-100">
+                  <div class="card-body"> <img src="/assets/images/distro_logos/apple_logo.svg" class="mb-3 distro-logo"
+                        alt="Apple Logo" aria-hidden="true">
+                     <h3>macOS</h3>
+                     <p>
+                        <a href="{{ base }}Retransmission-{{ v }}.dmg">Retransmission-{{ v }}.dmg</a><br/>
+                        <i class="fa-brands fa-apple">&nbsp;</i>Apple Silicon Native<br/>
+                        Requires macOS 11.0 or later <p/>
+                        <small class="text-muted">
+                           <a href="https://github.com/retransmission/retransmission/wiki/Previous-Releases">Previous Releases</a>
+                           &nbsp;&nbsp;&nbsp;&#47;&nbsp;&nbsp;
+                           <a href="https://build.retransmission.org/job/trunk-mac/">Nightlies</a>
+                        </small>
+                     </p>
+                  </div>
+               </div>
+            </section>
+            <section class="col-lg-4 themed-grid-col pt-3">
+               <div class="card h-100">
+                  <div class="card-body"> <img src="/assets/images/distro_logos/windows_logo.svg" class="mb-3 distro-logo"
+                        alt="Windows" aria-hidden="true">
+                     <h3>Windows</h3>
+                     <p>
+                        <a href="{{ base }}retransmission-{{ v }}-x64.msi">retransmission-{{ v }}-x64.msi</a> <br/>
+                        <a href="{{ base }}retransmission-{{ v }}-x86.msi">retransmission-{{ v }}-x86.msi</a> <br/>
+                        Requires Windows 10 or later
+                     </p>
+                     <p class="small">
+                        <a href="{{ base }}retransmission-{{ v }}-qt5-x64.msi">retransmission-{{ v }}-qt5-x64.msi</a> <br/>
+                        <a href="{{ base }}retransmission-{{ v }}-qt5-x86.msi">retransmission-{{ v }}-qt5-x86.msi</a> <br/>
+                        Requires Windows 7 or later
+                     </p>
+                     <p>
+                        <small class="text-muted">
+                           <a href="https://github.com/retransmission/retransmission-releases">Previous Releases</a>
+                           &nbsp;&nbsp;&nbsp;&#47;&nbsp;&nbsp;
+                           <a href="https://build.retransmission.org/job/trunk-win32/">Nightlies</a>
+                        </small>
+                     </p>
+                  </div>
+               </div>
+            </section>
+            <section class="col-lg-4 themed-grid-col pt-3">
+               <div class="card h-100">
+                  <div class="card-body"> <img src="/assets/images/distro_logos/tux-devil.png" class="mb-3 distro-logo" alt="Linux"
+                        aria-hidden="true">
+                     <h3>Linux &amp; Unix</h3>
+                     <p>
+                        <a href="{{ base }}retransmission-{{ v }}.tar.xz">retransmission-{{ v }}.tar.xz</a>
+                        <p/>
+                        <small class="text-muted">
+                           <a href="https://github.com/retransmission/retransmission-releases">Previous Releases</a>
+                           &nbsp;&nbsp;&nbsp;&#47;&nbsp;&nbsp;
+                           <a href="https://build.retransmission.org/job/trunk-linux/">Nightlies</a>
+                        </small>
+                     </p>
+                  </div>
+               </div>
+            </section>
+         </div>
+         <div class="row mb-3 pt-0 mt-0 text-center">
+            <section class="col-lg-6 themed-grid-col pt-3">
+               <div class="card h-100">
+                  <div class="card-body"> <img src="/assets/images/distro_logos/box.png" class="mb-3"
+                        alt="Box Logo" aria-hidden="true" style="height:60px;">
+                     <h3>Source Code</h3>
+                     <p>
+                           <a
+                           href="#unixdistros">Distros</a> &nbsp;&#124;&nbsp;&nbsp;<a
+                           href="https://build.retransmission.org/job/trunk-linux/">Nightlies</a>&nbsp;&nbsp;&#124;&nbsp;&nbsp;<a
+                           href="https://github.com/retransmission/retransmission-releases">Previous releases</a>
+                     </p>
+                  </div>
+               </div>
+            </section>
+            <section class="col-lg-6 themed-grid-col pt-3">
+               <div class="card h-100">
+                  <div class="card-body"> <img src="/assets/images/distro_logos/gear-logo.png" class="mb-3"
+                        alt="Embedded Systems" aria-hidden="true" style="height:60px;">
+                     <h3>NAS &amp; Embedded Systems</h3>
+                     <p> <a
+                           href="#embeddeddistros">Resources &amp; Tutorials</a>
+                     </p>
+                  </div>
+               </div>
+            </section>
+         </div>
+         {% if rel.sha256.dmg != "" %}
+         <section class="row pb-4">
+            <div class="col-md-12 themed-grid-col">
+               <div class="card mb-3">
+                  <div class="card-body">
+                     <h2 class="card-title">SHA256 Hashes</h2>
+                     <div class="card-text">
+<pre>
+<a href="https://www.virustotal.com/en/file/{{ rel.sha256.dmg }}/analysis">{{ rel.sha256.dmg }}</a>  Retransmission-{{ v }}.dmg
+<a href="https://www.virustotal.com/en/file/{{ rel.sha256.win_x64 }}/analysis">{{ rel.sha256.win_x64 }}</a>  retransmission-{{ v }}-x64.msi
+<a href="https://www.virustotal.com/en/file/{{ rel.sha256.win_x86 }}/analysis">{{ rel.sha256.win_x86 }}</a>  retransmission-{{ v }}-x86.msi
+<a href="https://www.virustotal.com/en/file/{{ rel.sha256.win_qt5_x64 }}/analysis">{{ rel.sha256.win_qt5_x64 }}</a>  retransmission-{{ v }}-qt5-x64.msi
+<a href="https://www.virustotal.com/en/file/{{ rel.sha256.win_qt5_x86 }}/analysis">{{ rel.sha256.win_qt5_x86 }}</a>  retransmission-{{ v }}-qt5-x86.msi
+<a href="https://www.virustotal.com/en/file/{{ rel.sha256.tarxz }}/analysis">{{ rel.sha256.tarxz }}</a>  retransmission-{{ v }}.tar.xz
+</pre>
+                     <p class="card-text"> Windows MSI packages: free code signing provided by <a
+                           href="https://signpath.io/">SignPath.io</a>, certificate by <a
+                           href="https://signpath.org/">SignPath Foundation</a> </p>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </section>
+         {% endif %}
+         <section>
+            <a id="unixdistros"></a>
+            <h2 class="mb-1">Linux &amp; Unix Distros</h2>
+            <h5 class="mb-3">Don't see your distro? Request to add it <a href="https://github.com/retransmission/retransmission/issues/2610">here</a></h5>
+            <!-- START Linux Distros Grid -->
+            <div class="row flex-row flex-wrap pb-4 text-center">
+               <!-- Ubuntu -->
+               <div class="col-md-3 themed-grid-col pb-3"> <img src="/assets/images/distro_logos/ubuntu_logo.svg"
+                     class="mb-3 distro-logo" alt="Ubuntu" aria-hidden="true">
+                  <h3>Ubuntu</h3>
+                  <p> <a href="https://launchpad.net/ubuntu/+source/transmission">Stable</a>
+                     <br> <code>$ apt install transmission</code>
+                  </p>
+               </div>
+               <!-- Fedora -->
+               <div class="col-md-3 themed-grid-col pb-3"> <img src="/assets/images/distro_logos/Fedora-logo.svg"
+                     class="mb-3 distro-logo" alt="Fedora Linux" aria-hidden="true">
+                  <h3>Fedora</h3>
+                  <p> <code>$ dnf install transmission</code> </p>
+               </div>
+               <!-- Arch -->
+               <div class="col-md-3 themed-grid-col pb-3"> <img src="/assets/images/distro_logos/arch_linux_logo.svg"
+                     class="mb-3 distro-logo" alt="Arch Linux" aria-hidden="true">
+                  <h3>Arch Linux</h3>
+                  <p> <a href="https://www.archlinux.org/packages/?q=transmission">Official Packages</a>
+                     <br> <a href="https://wiki.archlinux.org/title/transmission#Installation">Installation &amp; Configuration</a>
+                  </p>
+               </div>
+               <!-- Debian -->
+               <div class="col-md-3 themed-grid-col pb-3"> <img src="/assets/images/distro_logos/debian_logo.svg"
+                     class="mb-3 distro-logo" alt="Debian" aria-hidden="true">
+                  <h3>Debian</h3>
+                  <p> <a href="https://packages.debian.org/search?searchon=names&amp;keywords=transmission">Official
+                        Packages</a>
+                     <br> <code>$ apt install transmission</code>
+                  </p>
+               </div>
+               <!-- Rasberry Pi -->
+               <div class="col-md-3 themed-grid-col pb-3"> <img src="/assets/images/distro_logos/rpi_logo.svg"
+                     class="mb-3 distro-logo" alt="Raspberry Pi" aria-hidden="true">
+                  <h3>Raspberry Pi</h3>
+                  <p> <a
+                        href="https://pimylifeup.com/raspberry-pi-transmission/"> Torrentbox Tutorial </a>
+                     <br> <code>$ apt install transmission</code>
+                  </p>
+               </div>
+               <!-- Mint -->
+               <div class="col-md-3 themed-grid-col pb-3"> <img src="/assets/images/distro_logos/mint_logo.svg"
+                     class="mb-3 distro-logo" alt="Mint Linux" aria-hidden="true">
+                  <h3>Mint</h3>
+                  <p> <code>$ apt install transmission</code> </p>
+               </div>
+               <!-- OpenSUSE -->
+               <div class="col-md-3 themed-grid-col pb-3"> <img src="/assets/images/distro_logos/opensuse_logo.svg"
+                     class="mb-3 distro-logo" alt="OpenSUSE" aria-hidden="true">
+                  <h3>OpenSUSE</h3>
+                  <p> <a href="https://software.opensuse.org/search?baseproject=ALL&amp;q=transmission">Official
+                        Packages</a> </p>
+               </div>
+               <!-- CentOS -->
+               <div class="col-md-3 themed-grid-col pb-3"> <img src="/assets/images/distro_logos/centos_logo.svg"
+                     class="mb-3 distro-logo" alt="CentOS" aria-hidden="true">
+                  <h3>CentOS</h3>
+                  <p> <a href="http://geekery.altervista.org/dokuwiki/doku.php">Contributor Packages</a> </p>
+               </div>
+               <!-- Alpine Linux -->
+               <div class="col-md-3 themed-grid-col pb-3"> <img src="/assets/images/distro_logos/alpine_linux_logo.svg"
+                      class="mb-3 distro-logo" alt="Alpine Linux" aria-hidden="true">
+                  <h3>Alpine Linux</h3>
+                  <p> <a href="https://pkgs.alpinelinux.org/packages?name=transmission*">Community
+                        Packages</a>
+                     <br> <code>$ apk add transmission</code>
+                  </p>
+               </div>
+               <!-- postmarketOS -->
+               <div class="col-md-3 themed-grid-col pb-3"> <img src="/assets/images/distro_logos/postmarketos_logo.svg"
+                      class="mb-3 distro-logo" alt="postmarketOS" aria-hidden="true">
+                  <h3>postmarketOS</h3>
+                  <p> <a href="https://pkgs.alpinelinux.org/packages?name=transmission*">Community
+                        Packages</a>
+                     <br> <code>$ apk add transmission</code>
+                  </p>
+               </div>
+               <!-- Manjaro -->
+               <div class="col-md-3 themed-grid-col pb-3"> <img src="/assets/images/distro_logos/manjaro-logo.svg"
+                     class="mb-3 distro-logo" alt="Manjaro" aria-hidden="true">
+                  <h3>Manjaro</h3>
+                  <p> <a href="https://software.manjaro.org/package/transmission-cli">Installing transmission-cli</a>
+               <br><a href="https://linux-packages.com/manjaro-linux/package/transmission-gtk">Installing transmission-gtk</a></p>
+               </div>
+               <!-- PopOS -->
+               <div class="col-md-3 themed-grid-col pb-3"> <img src="/assets/images/distro_logos/pop_os_logo.svg"
+                     class="mb-3 distro-logo" alt="Manjaro" aria-hidden="true">
+                  <h3>Pop!_OS</h3>
+                  <p><code>$ apt install transmission</code></p>
+               </div>
+               <!-- Flathub -->
+               <div class="col-md-3 themed-grid-col pb-3"> <img src="/assets/images/distro_logos/flathub_logo.svg"
+                     class="mb-3 distro-logo" alt="Flathub" aria-hidden="true">
+                  <h3>Flathub</h3>
+                  <p> <a href="https://flathub.org/apps/details/com.transmissionbt.Transmission">Community Package</a>
+                  </p>
+               </div>
+               <!-- Docker -->
+               <div class="col-md-3 themed-grid-col pb-3"> <img src="/assets/images/distro_logos/docker_logo.svg"
+                     class="mb-3 distro-logo" alt="Docker" aria-hidden="true">
+                  <h3>Docker</h3>
+                  <p> <a href="https://hub.docker.com/r/linuxserver/transmission">linuxserver/transmission</a>
+                     <br>
+                  </p>
+               </div>
+               <!-- FreeBSD -->
+               <div class="col-md-3 themed-grid-col pb-3"> <img src="/assets/images/distro_logos/freebsd-logo.svg"
+                     class="mb-3 distro-logo" alt="FreeBSD" aria-hidden="true">
+                  <h3>FreeBSD</h3>
+                  <p> <a href="https://www.freebsd.org/cgi/ports.cgi?query=transmission&amp;stype=name&amp;sektion=net-p2p">Official Packages</a>
+                  <br> <a href="http://www.freshports.org/net-p2p/transmission-gtk2/">Fresh Ports</a>
+                  </p>
+               </div>
+               <!-- Gentoo -->
+               <div class="col-md-3 themed-grid-col pb-3"> <img src="/assets/images/distro_logos/gentoo_logo.svg"
+                     class="mb-3 distro-logo" alt="Gentoo" aria-hidden="true">
+                  <h3>Gentoo</h3>
+                  <p> <a href="https://packages.gentoo.org/package/net-p2p/transmission">Official Packages</a> </p>
+               </div>
+               <!-- Pardus -->
+               <div class="col-md-3 themed-grid-col pb-3"> <img src="/assets/images/distro_logos/pardus_logo.svg"
+                     class="mb-3 distro-logo" alt="Pardus" aria-hidden="true">
+                  <h3>Pardus</h3> <code>$ sudo pisi it transmission</code>
+               </div>
+               <!-- OpenBSD -->
+               <div class="col-md-3 themed-grid-col b-3"> <img src="/assets/images/distro_logos/openbsd_logo.svg"
+                     class="mb-3 distro-logo" alt="OpenBSD" aria-hidden="true">
+                  <h3>OpenBSD</h3>
+                  <p> <a href="https://openports.pl/path/net/transmission">OpenBSD Packages</a> </p>
+               </div>
+               <!-- Pet -->
+               <div class="col-md-3 themed-grid-col pb-3"> <img src="/assets/images/distro_logos/puppy_logo.svg"
+                     class="mb-3 distro-logo" alt="Puppy Linux" aria-hidden="true">
+                  <h3>Puppy</h3>
+                  <p> <a href="https://oldforum.puppylinux.com/viewtopic.php?t=117113">.pet Packages</a> </p>
+               </div>
+               <!-- Linux Distros Grid END -->
+            </div>
+         </section>
+         <section>
+            <h2 class="mb-4">Embedded Systems</h2>
+            <a id="embeddeddistros"></a>
+            <!-- START Embedded Systems Grid -->
+            <div class="row flex-row flex-wrap pb-4 text-center">
+               <!-- Open Media Vault 5 -->
+               <div class="col-md-3 themed-grid-col pb-3"> <img src="/assets/images/distro_logos/omv5-logo.png"
+                     class="mb-3 distro-logo" alt="Open Media Vault" aria-hidden="true">
+                  <h3>Open Media Vault 5</h3>
+                  <p> <a
+                        href="https://dbtechreviews.com/2020/01/how-to-install-transmission-on-openmediavault-5/">Installation &amp; Configuration</a>
+                  </p>
+               </div>
+               <!-- Synology NAS -->
+               <div class="col-md-3 themed-grid-col pb-3"> <img src="/assets/images/distro_logos/synology-nas-logo.png"
+                     class="mb-3 distro-logo" alt="Synology NAS" aria-hidden="true">
+                  <h3>Synology NAS</h3>
+                  <p> <a
+                        href="https://mariushosting.com/how-to-install-transmission-on-your-synology-nas/">Installation &amp; Configuration</a>
+                  </p>
+               </div>
+               <!-- WD My Cloud -->
+               <div class="col-md-3 themed-grid-col pb-3"> <img src="/assets/images/distro_logos/western-digital-logo.svg"
+                     class="mb-3 distro-logo" alt="Western Digital My Cloud" aria-hidden="true">
+                  <h3>WD My Cloud</h3>
+                  <p> <a
+                        href="https://support-en.wd.com/app/answers/detailweb/a_id/30054">Installation &amp; Configuration</a>
+                  </p>
+               </div>
+               <!-- QNAP NAS -->
+               <div class="col-md-3 themed-grid-col pb-3"> <img src="/assets/images/distro_logos/qnap-logo.png"
+                     class="mb-3 distro-logo" alt="QNAP NAS" aria-hidden="true">
+                  <h3>QNAP NAS</h3>
+                  <p> <a
+                        href="https://qnapclub.eu/en/qpkg/976">Installation &amp; Configuration</a>
+                  </p>
+               </div>
+               <!-- TrueNAS -->
+               <div class="col-md-3 themed-grid-col pb-3"> <img src="/assets/images/distro_logos/truenas-logo.webp"
+                     class="mb-3 distro-logo" alt="TrueNAS" aria-hidden="true">
+                  <h3>TrueNAS</h3>
+                  <p> <a
+                        href="https://www.truenas.com/apps/">Installation &amp; Configuration</a>
+                  </p>
+               </div>
+               <!-- OpenWRT -->
+               <div class="col-md-3 themed-grid-col pb-3"> <img src="/assets/images/distro_logos/openwrt-logo.svg"
+                     class="mb-3 distro-logo" alt="OpenWrt" aria-hidden="true">
+                  <h3>OpenWrt</h3>
+                  <p> <a
+                        href="https://openwrt.org/docs/guide-user/services/downloading_and_filesharing/transmission">Installation &amp; Configuration</a>
+                  </p>
+               </div>
+               <!-- IPFire -->
+               <div class="col-md-3 themed-grid-col pb-3"> <img src="/assets/images/distro_logos/IPFire-Logo-2.png"
+                     class="mb-3 distro-logo" alt="IPFire" aria-hidden="true">
+                  <h3>IPFire</h3>
+                  <p> <a
+                        href="https://wiki.ipfire.org/addons/transmission">Installation &amp; Configuration</a>
+                  </p>
+               </div>
+               <!-- XigmaNAS -->
+               <div class="col-md-3 themed-grid-col pb-3"> <img src="/assets/images/distro_logos/xigmanas_logo.svg"
+                     class="mb-3 distro-logo" alt="XigmaNAS" aria-hidden="true">
+                  <h3>XigmaNAS</h3>
+                  <p> <a
+                        href="https://www.xigmanas.com/wiki/doku.php?id=documentation:setup_and_user_guide:services_bittorrent">Configuration</a>
+                  </p>
+               </div>
+            </div>
+            <!-- END Embedded Systems Grid -->
+         </section>
+         </div>
+   </main>
