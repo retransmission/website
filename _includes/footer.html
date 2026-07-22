@@ -1,0 +1,28 @@
+<footer class="footer mt-auto py-3 bg-dark bg-rainbow mt-auto">
+   <div class="container">
+      <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+         <a href="/" class="d-flex align-items-center mt-2 text-white text-decoration-none"> <img
+               src="/assets/images/retransmission_icon.png" class="d-block align-middle" style="width:50px;" alt="">
+            <h3 class="ml-3 mr-5 mt-2">&nbsp;{{ site.brand }}&nbsp;&nbsp;&nbsp;</h3>
+         </a>
+         <!-- NAVIGATION START -->
+         <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 mt-3 justify-content-center mb-md-0">
+            <li> <a href="/" class="nav-link px-2{% if page.active_nav == 'home' %} active{% endif %}">Home</a> </li>
+            <li> <a href="/download" class="nav-link px-2{% if page.active_nav == 'download' %} active{% endif %}">Download</a> </li>
+            <li> <a href="/addons" class="nav-link px-2{% if page.active_nav == 'addons' %} active{% endif %}">Add-Ons</a> </li>
+            <li class="dropdown dropup"> <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#"
+                  aria-haspopup="true" aria-expanded="false" data-bs-toggle="dropdown">Community</a>
+               <div class="dropdown-menu"> <a class="dropdown-item"
+                     href="{{ site.repo_url }}/issues">Report a bug</a> <a
+                     class="dropdown-item" href="{{ site.repo_url }}/discussions">Developer
+                     & Contributor Discussions</a> <a class="dropdown-item"
+                     href="{{ site.forum_url }}/">Community forum</a> </div>
+            </li>
+            <li> <a href="/donate" class="nav-link px-2{% if page.active_nav == 'donate' %} active{% endif %}">Donate</a> </li>
+         </ul>
+         <!-- NAVIGATION END -->
+         <a class="btn btn-outline-light mb-0 mt-3 px-4" href="{{ site.repo_url }}"
+            role="button"> <i class="fa-brands fa-github">&nbsp;</i>&nbsp;GitHub </a>
+      </div>
+   </div>
+</footer>
