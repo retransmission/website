@@ -1,0 +1,12 @@
+# Jekyll configuration. GitHub Pages builds this automatically on push.
+title: Retransmission
+description: A Fast, Easy and Free Bittorrent Client For Mac, Windows and Linux
+url: https://retransmission.org
+
+# Fork identity — referenced across templates so a future rename is one edit here.
+brand: Retransmission
+repo_url: https://github.com/retransmission/retransmission
+releases_url: https://github.com/retransmission/retransmission/releases
+prev_releases_url: https://github.com/retransmission/retransmission-releases
+build_url: https://build.retransmission.org
+forum_url: https://forum.retransmission.org
