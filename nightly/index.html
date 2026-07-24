@@ -7,9 +7,11 @@ description: Development builds from the tip of the main branch.
 {% assign n = site.data.nightly %}
 {% assign base = site.releases_url | append: "/download/" | append: n.tag %}
 {% assign release = site.releases_url | append: "/tag/" | append: n.tag %}
+{% assign repository = site.repo_url | remove_first: "https://github.com/" %}
    <main id="content">
       <div class="container pb-4 pt-5 py-5">
          <h1 class="display-5 fw-bold">Nightly Builds</h1>
+         <p id="nightly-refreshed" class="small text-muted mb-3" hidden>Refreshed <time id="nightly-refreshed-at"></time><span id="nightly-commit" hidden> from commit <a id="nightly-commit-link"></a></span></p>
          <p class="lead mb-4">Automated builds from the very latest {{ site.brand }} source &mdash; the tip of <code>main</code>, refreshed on every successful build. They have the newest features and fixes, and the newest bugs. For everyday use, grab a tested release from the <a href="/download">downloads page</a> instead.</p>
 
          <div class="alert alert-warning" role="alert">
@@ -61,3 +63,73 @@ description: Development builds from the tip of the main branch.
          <p class="text-center mt-3"> <a href="{{ release }}" class="btn btn-outline-secondary" role="button">View the nightly release &amp; latest commit</a> </p>
       </div>
    </main>
+   <script>
+      (() => {
+         const requiredAssets = [
+            {{ n.assets.macos | jsonify }},
+            {{ n.assets.win_x64 | jsonify }},
+            {{ n.assets.win_arm64 | jsonify }},
+            {{ n.assets.win_x86 | jsonify }}
+         ];
+         const releaseApi = "https://api.github.com/repos/{{ repository }}/releases/tags/{{ n.tag }}";
+         const commitApi = "https://api.github.com/repos/{{ repository }}/commits/{{ n.tag }}";
+         const commitUrl = {{ site.repo_url | append: "/commit/" | jsonify }};
+         const refreshed = document.getElementById("nightly-refreshed");
+         const refreshedAt = document.getElementById("nightly-refreshed-at");
+         const commit = document.getElementById("nightly-commit");
+         const commitLink = document.getElementById("nightly-commit-link");
+         const relativeFormatter = new Intl.RelativeTimeFormat(undefined, { numeric: "auto" });
+         const dateFormatter = new Intl.DateTimeFormat(undefined, {
+            year: "numeric",
+            month: "long",
+            day: "numeric",
+            hour: "2-digit",
+            minute: "2-digit",
+            timeZone: "UTC",
+            timeZoneName: "short"
+         });
+
+         const formatAge = date => {
+            const seconds = (date.getTime() - Date.now()) / 1000;
+            const units = [
+               ["year", 31536000],
+               ["month", 2592000],
+               ["day", 86400],
+               ["hour", 3600],
+               ["minute", 60],
+               ["second", 1]
+            ];
+            const [unit, size] = units.find(([, unitSize]) => Math.abs(seconds) >= unitSize) ?? ["second", 1];
+            return relativeFormatter.format(Math.round(seconds / size), unit);
+         };
+
+         const commitRequest = fetch(commitApi, { headers: { Accept: "application/vnd.github+json" } })
+            .then(response => response.ok ? response.json() : Promise.reject())
+            .catch(() => null);
+
+         fetch(releaseApi, { headers: { Accept: "application/vnd.github+json" } })
+            .then(response => response.ok ? response.json() : Promise.reject())
+            .then(releaseData => {
+               const assetsByName = new Map(releaseData.assets.map(asset => [asset.name, Date.parse(asset.updated_at)]));
+               // The rolling release keeps its first publication date; replaced assets date each refresh.
+               const timestamps = requiredAssets.map(name => assetsByName.get(name));
+               if (timestamps.some(timestamp => !Number.isFinite(timestamp))) {
+                  return;
+               }
+               const date = new Date(Math.max(...timestamps));
+               refreshedAt.dateTime = date.toISOString();
+               refreshedAt.textContent = `${formatAge(date)} · ${dateFormatter.format(date)}`;
+               refreshed.hidden = false;
+               return commitRequest;
+            })
+            .then(commitData => {
+               if (!commitData || !/^[0-9a-f]{40}$/i.test(commitData.sha)) {
+                  return;
+               }
+               commitLink.href = commitUrl + commitData.sha;
+               commitLink.textContent = commitData.sha.slice(0, 9);
+               commit.hidden = false;
+            })
+            .catch(() => {});
+      })();
+   </script>
