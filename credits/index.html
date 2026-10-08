@@ -3,52 +3,38 @@ layout: default
 active_nav: credits
 title: Credits
 description: The maintainers, emeriti, and translators behind the project.
-# Sections of _includes/AUTHORS, a verbatim copy of the app repo's
-# AUTHORS file. To refresh it, copy the new file over the old one.
+# Sections of the app repo's AUTHORS file to show.
 # `heading` defaults to the section's heading in AUTHORS.
+# _data/authors.yml and _data/translators.yml are generated from
+# the app repo; to refresh them, run
+# _scripts/update-credits.py path/to/retransmission
 authors_sections:
   - section: Maintainers
   - section: Transmission Emeritus
     heading: Emeritus
     caption: Transmission's core team, before the fork.
 ---
-{%- capture authors %}{% include AUTHORS %}{% endcapture -%}
-{%- capture newline %}
-{% endcapture -%}
-{%- assign lines = authors | split: newline %}
    <main id="content">
       <div class="container px-4 py-5">
          <h1 class="display-5 fw-bold mb-4">Credits</h1>
          {%- for s in page.authors_sections %}
+         {%- assign section = site.data.authors | where: "section", s.section | first %}
          <section class="mb-4">
             <h2>{{ s.heading | default: s.section }}</h2>
             {%- if s.caption %}
             <p class="text-muted">{{ s.caption }}</p>
             {%- endif %}
             <ul class="list-unstyled">
-               {%- assign current = "" -%}
-               {%- for line in lines -%}
-                  {%- assign text = line | strip -%}
-                  {%- if text == "" %}{% continue %}{% endif -%}
-                  {%- assign indent = line | slice: 0 -%}
-                  {%- if indent != " " -%}
-                     {%- assign current = text -%}
-                  {%- elsif current == s.section -%}
-                     {%- assign parts = text | split: " (@" -%}
-                     {%- if parts.size > 1 %}
-               <li><a href="https://github.com/{{ parts[1] | remove: ')' }}">{{ parts[0] | escape }}</a></li>
-                     {%- else %}
-               <li>{{ text | escape }}</li>
-                     {%- endif -%}
-                  {%- endif -%}
+               {%- for person in section.people %}
+               {%- if person.github %}
+               <li><a href="https://github.com/{{ person.github }}">{{ person.name | escape }}</a></li>
+               {%- else %}
+               <li>{{ person.name | escape }}</li>
+               {%- endif %}
                {%- endfor %}
             </ul>
          </section>
          {%- endfor %}
-         {%- comment %}
-         _data/translators.yml is generated from the app repo's TRANSLATORS file.
-         To refresh it, run _scripts/update-credits.py path/to/retransmission
-         {%- endcomment %}
          {%- assign translators = site.data.translators %}
          <section id="translators" class="mb-4">
             <h2>Translators</h2>
