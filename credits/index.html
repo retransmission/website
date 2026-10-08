@@ -2,7 +2,7 @@
 layout: default
 active_nav: credits
 title: Credits
-description: The maintainers and emeriti behind the project.
+description: The maintainers, emeriti, and translators behind the project.
 # Sections of _includes/AUTHORS, a verbatim copy of the app repo's
 # AUTHORS file. To refresh it, copy the new file over the old one.
 # `heading` defaults to the section's heading in AUTHORS.
@@ -45,5 +45,74 @@ authors_sections:
             </ul>
          </section>
          {%- endfor %}
+         {%- comment %}
+         _data/translators.yml is generated from the app repo's TRANSLATORS file.
+         To refresh it, run _scripts/update-credits.py path/to/retransmission
+         {%- endcomment %}
+         {%- assign translators = site.data.translators %}
+         <section id="translators" class="mb-4">
+            <h2>Translators</h2>
+            <p class="text-muted">{{ translators.people }} people have translated {{ site.brand }} and Transmission into {{ translators.languages.size }} languages.
+               Missing or misspelled? <a href="{{ site.repo_url }}/blob/main/TRANSLATORS">Edit TRANSLATORS</a>, or <a href="{{ site.repo_url }}/blob/main/docs/Translating.md">help translate</a>.</p>
+            <div class="translator-filter mb-3" hidden>
+               <label for="translator-filter" class="visually-hidden">Find a name or language</label>
+               <input id="translator-filter" type="search" class="form-control" placeholder="Find your name or language" autocomplete="off">
+               <p id="translator-filter-status" class="small text-muted mt-1 mb-0" aria-live="polite"></p>
+            </div>
+            <div class="translator-grid">
+               {%- for t in translators.languages %}
+               <div class="card translator-language" id="translators-{{ t.code }}" data-code="{{ t.code }}">
+                  <div class="card-body">
+                     <h3 class="h6 card-title"><span class="translator-language-name">{{ t.language | escape }}</span> <span class="text-muted fw-normal small">{{ t.leads.size | plus: t.translators.size }}</span></h3>
+                     {%- if t.leads.size > 0 %}
+                     <ul class="list-unstyled small mb-1">
+                        {%- for lead in t.leads %}
+                        <li><span class="translator-name">{{ lead.name | escape }}</span> <span class="badge translator-role">{{ lead.role }}</span></li>
+                        {%- endfor %}
+                     </ul>
+                     {%- endif %}
+                     <ul class="translator-names small mb-0">
+                        {%- for name in t.translators %}<li><span class="translator-name">{{ name | escape }}</span></li>{% endfor %}
+                     </ul>
+                  </div>
+               </div>
+               {%- endfor %}
+            </div>
+         </section>
+         <script>
+            (() => {
+               const fold = (s) => s.normalize("NFKD").replace(/\p{M}/gu, "").toLowerCase();
+               const input = document.getElementById("translator-filter");
+               const status = document.getElementById("translator-filter-status");
+               const plural = (n, word) => `${n} ${word}${n === 1 ? "" : "s"}`;
+               const cards = [...document.querySelectorAll(".translator-language")].map((card) => ({
+                  card,
+                  language: fold(`${card.querySelector(".translator-language-name").textContent} ${card.dataset.code}`),
+                  names: [...card.querySelectorAll(".translator-name")].map((el) => ({ el, text: fold(el.textContent) })),
+               }));
+               input.addEventListener("input", () => {
+                  const query = fold(input.value.trim());
+                  let names = 0;
+                  let languages = 0;
+                  for (const { card, language, names: people } of cards) {
+                     let hits = 0;
+                     for (const person of people) {
+                        const hit = query !== "" && person.text.includes(query);
+                        person.el.classList.toggle("translator-match", hit);
+                        hits += hit;
+                     }
+                     const shown = !query || hits > 0 || language.includes(query);
+                     card.hidden = !shown;
+                     languages += shown;
+                     names += hits;
+                  }
+                  status.textContent = !query ? ""
+                     : languages === 0 ? "No matches."
+                     : names > 0 ? `${plural(names, "name")} in ${plural(languages, "language")}`
+                     : plural(languages, "language");
+               });
+               input.closest(".translator-filter").hidden = false;
+            })();
+         </script>
       </div>
    </main>
