@@ -82,6 +82,7 @@ authors_sections:
                   const query = fold(input.value.trim());
                   let names = 0;
                   let languages = 0;
+                  let languagesWithNames = 0;
                   for (const { card, language, names: people } of cards) {
                      let hits = 0;
                      for (const person of people) {
@@ -92,11 +93,12 @@ authors_sections:
                      const shown = !query || hits > 0 || language.includes(query);
                      card.hidden = !shown;
                      languages += shown;
+                     languagesWithNames += hits > 0;
                      names += hits;
                   }
                   status.textContent = !query ? ""
                      : languages === 0 ? "No matches."
-                     : names > 0 ? `${plural(names, "name")} in ${plural(languages, "language")}`
+                     : names > 0 ? `${plural(names, "name")} in ${plural(languagesWithNames, "language")}`
                      : plural(languages, "language");
                });
                input.closest(".translator-filter").hidden = false;
