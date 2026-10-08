@@ -274,6 +274,9 @@ background: linear-gradient(to right, #140A17 0%, #041e2a 50%, #140A17 100%);
    list-style: none;
    padding: 0;
 }
+.translator-name {
+   unicode-bidi: isolate;
+}
 .translator-names li {
    display: inline;
 }
