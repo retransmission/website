@@ -228,7 +228,8 @@ background: linear-gradient(to right, #140A17 0%, #041e2a 50%, #140A17 100%);
   .form-control::placeholder {
     color: #81a1c1;
   }
-  .translator-match {
+  mark,
+  .mark {
     background: #ebcb8b;
     color: #2e3440;
   }
@@ -270,10 +271,6 @@ background: linear-gradient(to right, #140A17 0%, #041e2a 50%, #140A17 100%);
    break-inside: avoid;
    margin-bottom: 1rem;
 }
-.translator-names {
-   list-style: none;
-   padding: 0;
-}
 .translator-name {
    unicode-bidi: isolate;
 }
@@ -288,9 +285,4 @@ background: linear-gradient(to right, #140A17 0%, #041e2a 50%, #140A17 100%);
    font-weight: 500;
    border: 1px solid currentColor;
    opacity: 0.7;
-}
-.translator-match {
-   background: #fff3bf;
-   color: #212529;
-   border-radius: 0.2em;
 }
