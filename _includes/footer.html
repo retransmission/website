@@ -9,10 +9,9 @@
          <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 mt-3 justify-content-center mb-md-0">
             <li> <a href="/" class="nav-link px-2{% if page.active_nav == 'home' %} active{% endif %}">Home</a> </li>
             <li> <a href="/download" class="nav-link px-2{% if page.active_nav == 'download' %} active{% endif %}">Download</a> </li>
-            <li> <a href="/addons" class="nav-link px-2{% if page.active_nav == 'addons' %} active{% endif %}">Add-Ons</a> </li>
-            <li class="dropdown dropup"> <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#"
+            <li class="dropdown dropup"> <a class="nav-link dropdown-toggle{% if page.active_nav == 'addons' %} active{% endif %}" data-toggle="dropdown" href="#"
                   aria-haspopup="true" aria-expanded="false" data-bs-toggle="dropdown">Community</a>
-               <div class="dropdown-menu"> <a class="dropdown-item"
+               <div class="dropdown-menu"> <a class="dropdown-item{% if page.active_nav == 'addons' %} active{% endif %}" href="/addons">Add-Ons</a> <a class="dropdown-item"
                      href="{{ site.repo_url }}/issues">Report a bug</a> <a
                      class="dropdown-item" href="{{ site.repo_url }}/discussions">Developer
                      & Contributor Discussions</a> <a class="dropdown-item"
