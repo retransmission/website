@@ -38,12 +38,16 @@ LEAD_ROLES = ["lead", "GTK lead", "Qt lead", "macOS lead"]
 LEAD_ROLE = {role.casefold(): role for role in LEAD_ROLES}
 LEAD = re.compile(rf"^(?P<name>.+?) \((?P<role>{'|'.join(map(re.escape, LEAD_ROLES))})\)$", re.IGNORECASE)
 
+# Letters that NFKD doesn't split into a base letter and marks.
+# Keep in sync with `letters` in credits/index.html.
+LETTERS = str.maketrans({"ł": "l", "ø": "o", "đ": "d", "ð": "d", "æ": "ae", "œ": "oe", "ı": "i", "þ": "th", "ħ": "h"})
+
 
 def collation_key(text):
-    """Sort case- and accent-insensitively, so "Émile" files under E."""
-    decomposed = unicodedata.normalize("NFKD", text)
+    """Sort case- and accent-insensitively, so "Émile" files under E and "Łukasz" under L."""
+    decomposed = unicodedata.normalize("NFKD", text.casefold())
     base = "".join(c for c in decomposed if not unicodedata.combining(c))
-    return base.casefold(), text
+    return base.translate(LETTERS), text
 
 
 def parse_authors(path):
