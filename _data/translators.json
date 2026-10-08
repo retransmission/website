@@ -395,7 +395,9 @@
       "leads": [
         {
           "name": "Tianhao He",
-          "role": "macOS lead"
+          "roles": [
+            "macOS lead"
+          ]
         }
       ],
       "translators": [
@@ -613,7 +615,9 @@
       "leads": [
         {
           "name": "Daniel Østergaard Nielsen",
-          "role": "macOS lead"
+          "roles": [
+            "macOS lead"
+          ]
         }
       ],
       "translators": [
@@ -663,7 +667,9 @@
       "leads": [
         {
           "name": "Maarten Van Coile",
-          "role": "macOS lead"
+          "roles": [
+            "macOS lead"
+          ]
         }
       ],
       "translators": [
@@ -907,7 +913,9 @@
       "leads": [
         {
           "name": "Etienne Samson",
-          "role": "macOS lead"
+          "roles": [
+            "macOS lead"
+          ]
         }
       ],
       "translators": [
@@ -1143,7 +1151,9 @@
       "leads": [
         {
           "name": "Sven-S. Porst",
-          "role": "macOS lead"
+          "roles": [
+            "macOS lead"
+          ]
         }
       ],
       "translators": [
@@ -1502,7 +1512,9 @@
       "leads": [
         {
           "name": "Marco Cavazzuti",
-          "role": "macOS lead"
+          "roles": [
+            "macOS lead"
+          ]
         }
       ],
       "translators": [
@@ -2069,7 +2081,9 @@
       "leads": [
         {
           "name": "Guilherme Fernandes",
-          "role": "macOS lead"
+          "roles": [
+            "macOS lead"
+          ]
         }
       ],
       "translators": [
@@ -2203,7 +2217,9 @@
       "leads": [
         {
           "name": "Sérgio Miranda",
-          "role": "macOS lead"
+          "roles": [
+            "macOS lead"
+          ]
         }
       ],
       "translators": [
@@ -2281,11 +2297,15 @@
       "leads": [
         {
           "name": "Alexander Bykov",
-          "role": "macOS lead"
+          "roles": [
+            "macOS lead"
+          ]
         },
         {
           "name": "Anton Sotkov",
-          "role": "macOS lead"
+          "roles": [
+            "macOS lead"
+          ]
         }
       ],
       "translators": [
@@ -2557,7 +2577,9 @@
       "leads": [
         {
           "name": "Jorge Carrasco",
-          "role": "macOS lead"
+          "roles": [
+            "macOS lead"
+          ]
         }
       ],
       "translators": [
@@ -2822,7 +2844,9 @@
       "leads": [
         {
           "name": "Emir SARI",
-          "role": "macOS lead"
+          "roles": [
+            "macOS lead"
+          ]
         }
       ],
       "translators": [

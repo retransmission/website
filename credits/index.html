@@ -52,7 +52,7 @@ authors_sections:
                      {%- if t.leads.size > 0 %}
                      <ul class="list-unstyled small mb-1">
                         {%- for lead in t.leads %}
-                        <li><span class="translator-name">{{ lead.name | escape }}</span> <span class="badge translator-role">{{ lead.role }}</span></li>
+                        <li><span class="translator-name">{{ lead.name | escape }}</span>{% for role in lead.roles %} <span class="badge translator-role">{{ role }}</span>{% endfor %}</li>
                         {%- endfor %}
                      </ul>
                      {%- endif %}
