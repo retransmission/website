@@ -114,21 +114,23 @@ def write_authors(source):
 
 def write_translators(source):
     languages = sorted(parse_translators(source).values(), key=lambda l: collation_key(l["language"]))
-    people = set()
+    names = set()
     data = {"note": NOTE.format("TRANSLATORS"), "languages": []}
     for lang in languages:
         roles = {name: sorted(roles, key=LEAD_ROLES.index) for name, roles in lang["leads"].items()}
         leads = sorted(roles, key=lambda name: (LEAD_ROLES.index(roles[name][0]), collation_key(name)))
         others = sorted(lang["translators"] - roles.keys(), key=collation_key)
-        people.update(leads, others)
+        names.update(leads, others)
         data["languages"].append({
             "language": lang["language"],
             "code": lang["code"],
             "leads": [{"name": name, "roles": roles[name]} for name in leads],
             "translators": others,
         })
-    data["people"] = len(people)
-    print(f"wrote {write('translators.json', data)}: {len(people)} people, {len(languages)} languages")
+    # Distinct name strings, not people: some people appear
+    # under more than one spelling or handle.
+    data["names"] = len(names)
+    print(f"wrote {write('translators.json', data)}: {len(names)} names, {len(languages)} languages")
 
 
 def main():
