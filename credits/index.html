@@ -5,9 +5,8 @@ title: Credits
 description: The maintainers, emeriti, and translators behind the project.
 # Sections of the app repo's AUTHORS file to show.
 # `heading` defaults to the section's heading in AUTHORS.
-# _data/authors.yml and _data/translators.yml are generated from
-# the app repo; to refresh them, run
-# _scripts/update-credits.py path/to/retransmission
+# _data/authors.json and _data/translators.json are generated from the app repo.
+# To refresh them, run _scripts/update-credits.py path/to/retransmission
 authors_sections:
   - section: Maintainers
   - section: Transmission Emeritus
@@ -18,7 +17,7 @@ authors_sections:
       <div class="container px-4 py-5">
          <h1 class="display-5 fw-bold mb-4">Credits</h1>
          {%- for s in page.authors_sections %}
-         {%- assign section = site.data.authors | where: "section", s.section | first %}
+         {%- assign section = site.data.authors.sections | where: "section", s.section | first %}
          <section class="mb-4">
             <h2>{{ s.heading | default: s.section }}</h2>
             {%- if s.caption %}
