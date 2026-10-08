@@ -1,0 +1,48 @@
+---
+layout: default
+title: Credits
+description: The maintainers and emeriti behind the project.
+# Sections of _includes/AUTHORS, a verbatim copy of the app repo's
+# AUTHORS file. To refresh it, copy the new file over the old one.
+# `heading` defaults to the section's heading in AUTHORS.
+authors_sections:
+  - section: Maintainers
+  - section: Transmission Emeritus
+    heading: Emeritus
+    caption: Transmission's core team, before the fork.
+---
+{%- capture authors %}{% include AUTHORS %}{% endcapture -%}
+{%- capture newline %}
+{% endcapture -%}
+{%- assign lines = authors | split: newline %}
+   <main id="content">
+      <div class="container px-4 py-5">
+         <h1 class="display-5 fw-bold mb-4">Credits</h1>
+         {%- for s in page.authors_sections %}
+         <section class="mb-4">
+            <h2>{{ s.heading | default: s.section }}</h2>
+            {%- if s.caption %}
+            <p class="text-muted">{{ s.caption }}</p>
+            {%- endif %}
+            <ul class="list-unstyled">
+               {%- assign current = "" -%}
+               {%- for line in lines -%}
+                  {%- assign text = line | strip -%}
+                  {%- if text == "" %}{% continue %}{% endif -%}
+                  {%- assign indent = line | slice: 0 -%}
+                  {%- if indent != " " -%}
+                     {%- assign current = text -%}
+                  {%- elsif current == s.section -%}
+                     {%- assign parts = text | split: " (@" -%}
+                     {%- if parts.size > 1 %}
+               <li><a href="https://github.com/{{ parts[1] | remove: ')' }}">{{ parts[0] | escape }}</a></li>
+                     {%- else %}
+               <li>{{ text | escape }}</li>
+                     {%- endif -%}
+                  {%- endif -%}
+               {%- endfor %}
+            </ul>
+         </section>
+         {%- endfor %}
+      </div>
+   </main>
