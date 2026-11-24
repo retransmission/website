@@ -9,3 +9,6 @@ repo_url: https://github.com/retransmission/retransmission
 releases_url: https://github.com/retransmission/retransmission/releases
 prev_releases_url: https://github.com/retransmission/retransmission-releases
 build_url: https://build.retransmission.org
+
+# Site-wide banner above the nav. Remove or leave empty to hide it.
+announcement: Public Announcement & First Official Releases Coming in January 2027

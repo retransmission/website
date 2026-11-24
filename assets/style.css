@@ -88,6 +88,13 @@ background: -webkit-gradient(linear, left top, right top, from(#140A17), color-s
 background: linear-gradient(to right, #140A17 0%, #041e2a 50%, #140A17 100%);
 }
 
+/* Site-wide announcement bar; text comes from _config.yml */
+.announcement-banner {
+  background: #198754;
+  color: #fff;
+  font-weight: 500;
+}
+
 .bd-placeholder-img {
   font-size: 1.125rem;
   text-anchor: middle;
